@@ -4,7 +4,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-ink flex flex-col">
       {/* Nav */}
-      <nav className="flex items-center justify-between px-12 h-16 border-b border-white/6">
+      <nav className="flex items-center justify-between px-12 h-16 border-b border-white/5">
         <div className="font-display text-xl font-bold text-linen tracking-tight">
           Lyntl
         </div>
@@ -38,7 +38,7 @@ export default function HomePage() {
       </section>
 
       {/* Stat bar */}
-      <div className="bg-forest grid grid-cols-3 divide-x divide-white/8">
+      <div className="bg-forest grid grid-cols-3 divide-x divide-white/10">
         {[
           { num: '3.2M', label: 'Americans lose a loved one every year' },
           { num: '62%', label: 'of families miss a government benefit they\'re owed' },

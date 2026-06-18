@@ -42,7 +42,7 @@ export default async function PartnerDashboardPage() {
   return (
     <main className="min-h-screen bg-ink">
       {/* Nav */}
-      <nav className="flex items-center justify-between px-8 h-14 border-b border-white/6 bg-ink/90 backdrop-blur sticky top-0 z-10">
+      <nav className="flex items-center justify-between px-8 h-14 border-b border-white/5 bg-ink/95 backdrop-blur sticky top-0 z-10">
         <div className="font-display text-lg font-bold text-linen">
           Estate<span className="text-gold">Desk</span>
         </div>
@@ -88,8 +88,8 @@ export default async function PartnerDashboardPage() {
         </div>
 
         {/* Families table */}
-        <div className="bg-white/2 border border-white/6 rounded-lg overflow-hidden">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-white/6">
+        <div className="bg-white/5 border border-white/5 rounded-lg overflow-hidden">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-white/5">
             <h2 className="text-linen font-semibold text-sm tracking-wide">Activated families</h2>
           </div>
 
@@ -101,7 +101,7 @@ export default async function PartnerDashboardPage() {
           ) : (
             <table className="w-full">
               <thead>
-                <tr className="border-b border-white/4">
+                <tr className="border-b border-white/5">
                   {['Deceased', 'Family contact', 'Activated', 'Status', 'Link'].map(h => (
                     <th key={h} className="text-left text-[10px] font-semibold tracking-widest uppercase text-mid px-6 py-3">
                       {h}
@@ -111,7 +111,7 @@ export default async function PartnerDashboardPage() {
               </thead>
               <tbody>
                 {families.map((family) => (
-                  <tr key={family.id} className="border-b border-white/4 hover:bg-white/2 transition-colors">
+                  <tr key={family.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                     <td className="px-6 py-4 text-linen text-sm font-medium">{family.deceased_name}</td>
                     <td className="px-6 py-4">
                       <div className="text-sand text-sm">{family.contact_name}</div>

@@ -100,7 +100,7 @@ export default function PartnerSignupPage() {
           <p className="text-mid text-sm">Create your partner account</p>
         </div>
 
-        <div className="bg-white/3 border border-white/8 rounded-lg p-8">
+        <div className="bg-white/5 border border-white/10 rounded-lg p-8">
           <form onSubmit={handleSubmit} className="space-y-5">
 
             {/* Funeral home info */}

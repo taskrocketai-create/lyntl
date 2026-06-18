@@ -45,7 +45,7 @@ export default function PartnerLoginPage() {
         </div>
 
         {/* Card */}
-        <div className="bg-white/3 border border-white/8 rounded-lg p-8">
+        <div className="bg-white/5 border border-white/10 rounded-lg p-8">
           <h1 className="text-linen font-semibold text-lg mb-6">Sign in</h1>
 
           <form onSubmit={handleLogin} className="space-y-4">
