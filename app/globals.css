@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-cormorant: 'Cormorant Garamond', serif;
+    --font-inter: 'Inter', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply bg-gold text-ink px-6 py-3 text-sm font-semibold tracking-wider uppercase
+           rounded-sm transition-all duration-200
+           hover:bg-amber-500 hover:-translate-y-px
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-linen border border-white/20 px-6 py-3 text-sm font-normal
+           tracking-wide rounded-sm transition-all duration-200
+           hover:border-moss hover:text-moss
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-forest {
+    @apply bg-forest text-linen px-6 py-3 text-sm font-semibold tracking-wide
+           rounded-sm transition-all duration-200
+           hover:bg-leaf hover:-translate-y-px
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+  }
+
+  /* ── Form inputs ── */
+  .input {
+    @apply w-full bg-white/5 border border-white/10 text-linen placeholder-mid
+           px-4 py-3 rounded text-sm transition-colors duration-200
+           focus:outline-none focus:border-moss focus:bg-white/8
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .input-linen {
+    @apply w-full bg-white border border-sand text-ink placeholder-mid
+           px-4 py-3 rounded text-sm transition-colors duration-200
+           focus:outline-none focus:border-leaf focus:ring-1 focus:ring-leaf/20
+           disabled:opacity-50;
+  }
+
+  .label {
+    @apply block text-xs font-semibold tracking-widest uppercase text-mid mb-2;
+  }
+
+  .label-linen {
+    @apply block text-xs font-semibold tracking-widest uppercase text-mid mb-2;
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-white/3 border border-white/8 rounded-lg p-6
+           transition-colors duration-200;
+  }
+
+  .card-linen {
+    @apply bg-white border border-sand/60 rounded-lg p-6 shadow-card;
+  }
+
+  /* ── Badges ── */
+  .badge-urgent {
+    @apply text-gold bg-gold/10 border border-gold/25
+           text-xs font-semibold px-2 py-0.5 rounded-full;
+  }
+
+  .badge-done {
+    @apply text-moss bg-moss/10 border border-moss/20
+           text-xs font-semibold px-2 py-0.5 rounded-full;
+  }
+
+  .badge-pending {
+    @apply text-mid bg-mid/10 border border-mid/15
+           text-xs font-medium px-2 py-0.5 rounded-full;
+  }
+
+  /* ── Section headings ── */
+  .eyebrow {
+    @apply text-xs font-semibold tracking-[0.18em] uppercase text-gold mb-3;
+  }
+
+  .eyebrow-moss {
+    @apply text-xs font-semibold tracking-[0.18em] uppercase text-moss mb-3;
+  }
+
+  .eyebrow-leaf {
+    @apply text-xs font-semibold tracking-[0.14em] uppercase text-leaf mb-3;
+  }
+
+  .display-heading {
+    @apply font-display font-bold text-linen leading-tight;
+  }
+
+  /* ── Dividers ── */
+  .divider {
+    @apply h-px bg-white/6;
+  }
+
+  .divider-linen {
+    @apply h-px bg-black/8;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
