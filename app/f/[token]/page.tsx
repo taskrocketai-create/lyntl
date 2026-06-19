@@ -9,11 +9,17 @@ export default async function FamilyTokenPage({
   const { token } = await params
   const service = createServiceClient()
 
-  const { data: family } = await service
+  const { data: familyRaw } = await service
     .from('families')
     .select('token, intake_completed, tasks_generated')
     .eq('token', token)
     .single()
+
+  const family = familyRaw as {
+    token: string
+    intake_completed: boolean
+    tasks_generated: boolean
+  } | null
 
   if (!family) notFound()
 

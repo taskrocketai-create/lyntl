@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation'
 import { createServiceClient } from '@/lib/supabase/service'
-import type { Family, Partner } from '@/types/database'
 
 export default async function FamilyLayout({
   children,
@@ -12,25 +11,30 @@ export default async function FamilyLayout({
   const { token } = await params
   const service = createServiceClient()
 
-  // Look up family by token
-  const { data: family } = await service
+  const { data: familyRaw } = await service
     .from('families')
-    .select('*, partners(*)')
+    .select('id, token, partner_id')
     .eq('token', token)
     .single()
 
+  const family = familyRaw as { id: string; token: string; partner_id: string } | null
   if (!family) notFound()
 
-  const partner = (family as any).partners as Partner
+  const { data: partnerRaw } = await service
+    .from('partners')
+    .select('name')
+    .eq('id', family.partner_id)
+    .single()
+
+  const partner = partnerRaw as { name: string } | null
 
   return (
     <div className="min-h-screen bg-linen text-ink">
-      {/* Family portal nav */}
       <nav className="flex items-center justify-between px-8 h-14 bg-forest border-b border-forest/80 sticky top-0 z-10">
         <img src="/logo-horizontal.svg" alt="Lyntl" className="h-8 brightness-0 invert" />
-        <div className="text-moss text-xs text-right">
+        <div className="text-right">
           <div className="text-sand text-sm font-medium">{partner?.name}</div>
-          <div>Family portal</div>
+          <div className="text-moss text-xs">Family portal</div>
         </div>
       </nav>
       {children}
