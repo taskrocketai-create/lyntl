@@ -2,14 +2,16 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { createServiceClient } from '@/lib/supabase/service'
 import { nanoid } from 'nanoid'
+import type { Database } from '@/types/database'
+
+type FamilyInsert = Database['public']['Tables']['families']['Insert']
 
 function generateToken(): string {
-  return nanoid(12) // 12-char URL-safe token
+  return nanoid(12)
 }
 
 export async function POST(request: NextRequest) {
   try {
-    // Verify partner is authenticated
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) {
@@ -46,7 +48,6 @@ export async function POST(request: NextRequest) {
 
     // Generate unique token
     let token = generateToken()
-    // Ensure uniqueness
     let attempts = 0
     while (attempts < 5) {
       const { data: existing } = await service
@@ -59,18 +60,23 @@ export async function POST(request: NextRequest) {
       attempts++
     }
 
-    // Create family record
+    // Build insert object with explicit type
+    const familyInsert: FamilyInsert = {
+      partner_id: partner_id as string,
+      token,
+      deceased_name: (deceased_name as string).trim(),
+      deceased_dod: deceased_dod ? (deceased_dod as string) : null,
+      contact_name: (contact_name as string).trim(),
+      contact_email: contact_email ? (contact_email as string).trim() : null,
+      contact_phone: (contact_phone as string).trim(),
+      intake_completed: false,
+      tasks_generated: false,
+      amount_charged_cents: 4900,
+    }
+
     const { data: family, error: familyError } = await service
       .from('families')
-      .insert({
-        partner_id,
-        token,
-        deceased_name: deceased_name.trim(),
-        deceased_dod: deceased_dod || null,
-        contact_name: contact_name.trim(),
-        contact_email: contact_email?.trim() || null,
-        contact_phone: contact_phone.trim(),
-      })
+      .insert(familyInsert)
       .select()
       .single()
 
@@ -87,6 +93,7 @@ export async function POST(request: NextRequest) {
       const twilioPhone = process.env.TWILIO_PHONE_NUMBER
 
       if (twilioSid && twilioToken && twilioPhone) {
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
         const twilio = require('twilio')(twilioSid, twilioToken)
         await twilio.messages.create({
           body: `${partnerName} has set up your Lyntl account. We'll guide you through everything you need to handle after ${deceased_name}'s passing — one step at a time.\n\nGet started here: ${familyLink}\n\nReply STOP to opt out.`,
@@ -95,7 +102,6 @@ export async function POST(request: NextRequest) {
         })
       }
     } catch (smsError) {
-      // Log but don't fail — family is created, SMS is best-effort
       console.error('SMS send failed:', smsError)
     }
 
