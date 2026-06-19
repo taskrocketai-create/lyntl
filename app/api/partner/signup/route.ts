@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 3. Create partner record
-    const { data: partner, error: partnerError } = await supabase
+    const { data: partner, error: partnerError } = await (supabase as any)
       .from('partners')
       .insert({
         name: funeral_home_name,
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
     if (partnerError) throw partnerError
 
     // 4. Link user to partner
-    const { error: linkError } = await supabase
+    const { error: linkError } = await (supabase as any)
       .from('partner_users')
       .insert({
         user_id: userId,

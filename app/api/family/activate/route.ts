@@ -2,10 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { createServiceClient } from '@/lib/supabase/service'
 import { nanoid } from 'nanoid'
-import type { Database } from '@/types/database'
-
-type FamilyInsert = Database['public']['Tables']['families']['Insert']
-
 function generateToken(): string {
   return nanoid(12)
 }
@@ -60,26 +56,24 @@ export async function POST(request: NextRequest) {
       attempts++
     }
 
-    // Build insert object with explicit type
-    const familyInsert: FamilyInsert = {
-      partner_id: partner_id as string,
-      token,
-      deceased_name: (deceased_name as string).trim(),
-      deceased_dod: deceased_dod ? (deceased_dod as string) : null,
-      deceased_state: null,
-      contact_name: (contact_name as string).trim(),
-      contact_email: contact_email ? (contact_email as string).trim() : null,
-      contact_phone: (contact_phone as string).trim(),
-      intake_completed: false,
-      tasks_generated: false,
-      stripe_payment_intent_id: null,
-      amount_charged_cents: 4900,
-      paid_at: null,
-    }
-
-    const { data: family, error: familyError } = await service
-      .from('families')
-      .insert(familyInsert)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data: family, error: familyError } = await (service
+      .from('families') as any)
+      .insert({
+        partner_id: partner_id as string,
+        token,
+        deceased_name: (deceased_name as string).trim(),
+        deceased_dod: deceased_dod ? (deceased_dod as string) : null,
+        deceased_state: null,
+        contact_name: (contact_name as string).trim(),
+        contact_email: contact_email ? (contact_email as string).trim() : null,
+        contact_phone: (contact_phone as string).trim(),
+        intake_completed: false,
+        tasks_generated: false,
+        stripe_payment_intent_id: null,
+        amount_charged_cents: 4900,
+        paid_at: null,
+      })
       .select()
       .single()
 
