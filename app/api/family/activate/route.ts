@@ -66,12 +66,15 @@ export async function POST(request: NextRequest) {
       token,
       deceased_name: (deceased_name as string).trim(),
       deceased_dod: deceased_dod ? (deceased_dod as string) : null,
+      deceased_state: null,
       contact_name: (contact_name as string).trim(),
       contact_email: contact_email ? (contact_email as string).trim() : null,
       contact_phone: (contact_phone as string).trim(),
       intake_completed: false,
       tasks_generated: false,
+      stripe_payment_intent_id: null,
       amount_charged_cents: 4900,
+      paid_at: null,
     }
 
     const { data: family, error: familyError } = await service

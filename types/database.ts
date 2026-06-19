@@ -41,7 +41,13 @@ export type Database = {
           created_at: string
           updated_at: string
         }
-        Insert: Omit<Database['public']['Tables']['families']['Row'], 'id' | 'created_at' | 'updated_at' | 'activated_at'>
+        Insert: Omit<Database['public']['Tables']['families']['Row'], 'id' | 'created_at' | 'updated_at' | 'activated_at'> & {
+          deceased_dod?: string | null
+          deceased_state?: string | null
+          contact_email?: string | null
+          stripe_payment_intent_id?: string | null
+          paid_at?: string | null
+        }
         Update: Partial<Database['public']['Tables']['families']['Insert']>
       }
       intake_responses: {
