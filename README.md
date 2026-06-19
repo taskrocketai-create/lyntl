@@ -43,3 +43,4 @@ See `.env.local.template` for all required variables.
 
 See `schema.sql` for the complete Supabase migration.
 Tables: `partners`, `families`, `intake_responses`, `tasks`, `reminders`, `partner_users`
+
