@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#F7F2E8"/>
+
+<rect x="575" y="105" width="450" height="42" fill="#B88A2E"/>
+<rect x="570" y="151" width="460" height="10" fill="#0F3D2E"/>
+
+<rect x="615" y="180" width="80" height="230" fill="#0F3D2E"/>
+<rect x="905" y="180" width="80" height="230" fill="#0F3D2E"/>
+
+<rect x="590" y="440" width="130" height="16" fill="#0F3D2E"/>
+<rect x="880" y="440" width="130" height="16" fill="#0F3D2E"/>
+
+<text x="800" y="660" text-anchor="middle"
+font-family="Georgia, Times New Roman, serif"
+font-size="205" font-weight="700" letter-spacing="-8"
+fill="#0F3D2E">Lyntl</text>
+
+<line x1="640" y1="720" x2="725" y2="720" stroke="#B88A2E" stroke-width="3"/>
+<rect x="792" y="710" width="20" height="20" fill="#B88A2E" transform="rotate(45 802 720)"/>
+<line x1="880" y1="720" x2="965" y2="720" stroke="#B88A2E" stroke-width="3"/>
+
+<text x="800" y="790" text-anchor="middle"
+font-family="Georgia, Times New Roman, serif"
+font-size="42" letter-spacing="19"
+fill="#0F3D2E">ESTATE ASSISTANCE</text>
+
+<text x="800" y="850" text-anchor="middle"
+font-family="Georgia, Times New Roman, serif"
+font-size="38" font-style="italic" letter-spacing="6"
+fill="#B88A2E">Carrying What Comes Next.</text>
+</svg>

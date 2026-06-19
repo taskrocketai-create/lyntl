@@ -38,9 +38,7 @@ export default function PartnerLoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="text-center mb-10">
-          <div className="font-display text-3xl font-bold text-linen mb-2">
-            Estate<span className="text-gold">Desk</span>
-          </div>
+          <img src="/logo.svg" alt="Lyntl" className="h-28 mx-auto mb-3" />
           <p className="text-mid text-sm">Partner portal</p>
         </div>
 

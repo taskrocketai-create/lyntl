@@ -27,9 +27,7 @@ export default async function FamilyLayout({
     <div className="min-h-screen bg-linen text-ink">
       {/* Family portal nav */}
       <nav className="flex items-center justify-between px-8 h-14 bg-forest border-b border-forest/80 sticky top-0 z-10">
-        <div className="font-display text-lg font-bold text-linen">
-          Estate<span className="text-gold">Desk</span>
-        </div>
+        <img src="/logo-horizontal.svg" alt="Lyntl" className="h-8 brightness-0 invert" />
         <div className="text-moss text-xs text-right">
           <div className="text-sand text-sm font-medium">{partner?.name}</div>
           <div>Family portal</div>

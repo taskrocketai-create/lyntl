@@ -94,9 +94,7 @@ export default function PartnerSignupPage() {
     <main className="min-h-screen bg-ink flex flex-col items-center justify-center px-4 py-12">
       <div className="w-full max-w-lg">
         <div className="text-center mb-10">
-          <div className="font-display text-3xl font-bold text-linen mb-2">
-            Estate<span className="text-gold">Desk</span>
-          </div>
+          <img src="/logo.svg" alt="Lyntl" className="h-28 mx-auto mb-3" />
           <p className="text-mid text-sm">Create your partner account</p>
         </div>
 

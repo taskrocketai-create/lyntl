@@ -43,9 +43,7 @@ export default async function PartnerDashboardPage() {
     <main className="min-h-screen bg-ink">
       {/* Nav */}
       <nav className="flex items-center justify-between px-8 h-14 border-b border-white/5 bg-ink/95 backdrop-blur sticky top-0 z-10">
-        <div className="font-display text-lg font-bold text-linen">
-          Estate<span className="text-gold">Desk</span>
-        </div>
+        <img src="/logo-horizontal.svg" alt="Lyntl" className="h-8 brightness-0 invert" />
         <div className="flex items-center gap-6">
           <span className="text-moss text-sm">{partner.name}</span>
           <form action="/api/partner/logout" method="POST">
