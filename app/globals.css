@@ -6,118 +6,139 @@
   :root {
     --font-cormorant: 'Cormorant Garamond', serif;
     --font-inter: 'Inter', sans-serif;
+    /* Lyntl design tokens */
+    --ivory: #F7F2E8;
+    --forest: #0F3D2E;
+    --gold: #B88A2E;
+    --gold-light: #CDA24A;
+    --sand: #efe6d4;
+    --mid-green: #3a4a42;
   }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
+  html { scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
 }
 
 @layer components {
-  /* ── Buttons ── */
   .btn-primary {
-    @apply bg-gold text-ink px-6 py-3 text-sm font-semibold tracking-wider uppercase
-           rounded-sm transition-all duration-200
-           hover:bg-amber-500 hover:-translate-y-px
+    @apply inline-flex items-center justify-center font-semibold text-sm tracking-wider uppercase
+           rounded transition-all duration-200
+           hover:-translate-y-px
            disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+    background: #B88A2E;
+    color: #F7F2E8;
+    padding: 14px 28px;
+    box-shadow: 0 12px 28px rgba(184,138,46,0.28);
+    font-family: system-ui, sans-serif;
   }
-
-  .btn-ghost {
-    @apply bg-transparent text-linen border border-white/20 px-6 py-3 text-sm font-normal
-           tracking-wide rounded-sm transition-all duration-200
-           hover:border-moss hover:text-moss
-           disabled:opacity-50 disabled:cursor-not-allowed;
-  }
-
   .btn-forest {
-    @apply bg-forest text-linen px-6 py-3 text-sm font-semibold tracking-wide
-           rounded-sm transition-all duration-200
-           hover:bg-leaf hover:-translate-y-px
-           disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+    @apply inline-flex items-center justify-center font-semibold text-sm tracking-wider uppercase
+           rounded transition-all duration-200 hover:-translate-y-px;
+    background: #0F3D2E;
+    color: #F7F2E8;
+    padding: 14px 28px;
+    font-family: system-ui, sans-serif;
   }
-
-  /* ── Form inputs ── */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center text-sm font-normal
+           rounded transition-all duration-200;
+    background: transparent;
+    color: #0F3D2E;
+    border: 1px solid #e1d5b8;
+    padding: 14px 28px;
+    font-family: system-ui, sans-serif;
+  }
   .input {
-    @apply w-full bg-white/5 border border-white/10 text-linen placeholder-mid
-           px-4 py-3 rounded text-sm transition-colors duration-200
-           focus:outline-none focus:border-moss focus:bg-white/10
-           disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply w-full text-sm transition-colors duration-200 focus:outline-none;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #F7F2E8;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-family: system-ui, sans-serif;
   }
-
+  .input:focus { border-color: #B88A2E; }
+  .input::placeholder { color: rgba(247,242,232,0.35); }
   .input-linen {
-    @apply w-full bg-white border border-sand text-ink placeholder-mid
-           px-4 py-3 rounded text-sm transition-colors duration-200
-           focus:outline-none focus:border-leaf focus:ring-1 focus:ring-leaf/20
-           disabled:opacity-50;
+    @apply w-full text-sm transition-colors duration-200 focus:outline-none;
+    background: #ffffff;
+    border: 1px solid #e1d5b8;
+    color: #0F3D2E;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-family: system-ui, sans-serif;
   }
-
+  .input-linen:focus { border-color: #B88A2E; }
   .label {
-    @apply block text-xs font-semibold tracking-widest uppercase text-mid mb-2;
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(247,242,232,0.5);
+    margin-bottom: 6px;
+    font-family: system-ui, sans-serif;
   }
-
-  .label-linen {
-    @apply block text-xs font-semibold tracking-widest uppercase text-mid mb-2;
-  }
-
-  /* ── Cards ── */
   .card {
-    @apply bg-white/5 border border-white/10 rounded-lg p-6
-           transition-colors duration-200;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 24px;
   }
-
   .card-linen {
-    @apply bg-white border border-sand/60 rounded-lg p-6 shadow-card;
+    background: #ffffff;
+    border: 1px solid #ece1c8;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(15,61,46,0.06);
   }
-
-  /* ── Badges ── */
   .badge-urgent {
-    @apply text-gold bg-gold/10 border border-gold/25
-           text-xs font-semibold px-2 py-0.5 rounded-full;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: rgba(184,138,46,0.12);
+    color: #B88A2E;
+    border: 1px solid rgba(184,138,46,0.25);
+    font-family: system-ui, sans-serif;
   }
-
   .badge-done {
-    @apply text-moss bg-moss/10 border border-moss/20
-           text-xs font-semibold px-2 py-0.5 rounded-full;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: rgba(29,86,65,0.12);
+    color: #1d5641;
+    border: 1px solid rgba(29,86,65,0.2);
+    font-family: system-ui, sans-serif;
   }
-
   .badge-pending {
-    @apply text-mid bg-mid/10 border border-mid/15
-           text-xs font-medium px-2 py-0.5 rounded-full;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: rgba(154,138,106,0.1);
+    color: #9a8a6a;
+    border: 1px solid rgba(154,138,106,0.2);
+    font-family: system-ui, sans-serif;
   }
-
-  /* ── Section headings ── */
   .eyebrow {
-    @apply text-xs font-semibold tracking-[0.18em] uppercase text-gold mb-3;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #B88A2E;
+    margin-bottom: 10px;
+    font-family: system-ui, sans-serif;
   }
-
-  .eyebrow-moss {
-    @apply text-xs font-semibold tracking-[0.18em] uppercase text-moss mb-3;
+  .eyebrow-forest {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #1d5641;
+    margin-bottom: 10px;
+    font-family: system-ui, sans-serif;
   }
-
-  .eyebrow-leaf {
-    @apply text-xs font-semibold tracking-[0.14em] uppercase text-leaf mb-3;
-  }
-
-  .display-heading {
-    @apply font-display font-bold text-linen leading-tight;
-  }
-
-  /* ── Dividers ── */
-  .divider {
-    @apply h-px bg-white/5;
-  }
-
-  .divider-linen {
-    @apply h-px bg-black/8;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  .divider { height: 1px; background: rgba(255,255,255,0.08); }
+  .divider-linen { height: 1px; background: #ece1c8; }
 }

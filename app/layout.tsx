@@ -33,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="bg-ink text-linen font-sans antialiased">
+      <body className="antialiased" style={{ background: "#F7F2E8", color: "#0F3D2E" }}>
         {children}
       </body>
     </html>
